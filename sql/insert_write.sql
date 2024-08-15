@@ -1,0 +1,1 @@
+insert into freeboard(name, pass, subject, content, regist_day) values('$name', '$pass', '$subject', '$content', '$regist_day'); 

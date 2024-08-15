@@ -1,0 +1,2 @@
+<?php
+'$regist_day'
