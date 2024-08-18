@@ -1,14 +1,14 @@
 <?php
-    if (isset($_GET["num"]))				// $_GET["num"] : 레코드 번호
-    $num = $_GET["num"];
-    else 
-        $num = "";
+    if (isset($_GET["num"]))			
+		$num = $_GET["num"];
+	else 
+		$num = "";
 
-    $con = mysqli_connect("localhost", "user", "12345", "sample");	// DB 접속
-    $sql = "select * from freeboard where num=$num";	// 레코드 검색
-    $result = mysqli_query($con, $sql);			// SQL 명령 실행
+    require 'connection.php';
+    echo "연결성공";
 
-    $row = mysqli_fetch_assoc($result);			// 레코드 가져오기
+    $view_result = connect($num);
+    $row = mysqli_fetch_assoc($view_result);			// 레코드 가져오기
     $name      = $row["name"];					// 이름
     $subject    = $row["subject"];				// 제목
     $regist_day   = $row["regist_day"];			// 작성일
@@ -16,7 +16,6 @@
     $content = str_replace(" ", "&nbsp;", $content);		// 공백 변환
     $content = str_replace("\n", "<br>", $content);			// 줄바꿈 변환
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
